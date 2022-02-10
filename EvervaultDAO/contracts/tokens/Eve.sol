@@ -1,18 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity 0.7.5;
 
-/**
- * ███████╗██╗   ██╗███████╗██████╗ ██╗   ██╗ █████╗ ██╗   ██╗██╗  ████████╗
- * ██╔════╝██║   ██║██╔════╝██╔══██╗██║   ██║██╔══██╗██║   ██║██║  ╚══██╔══╝
- * █████╗  ██║   ██║█████╗  ██████╔╝██║   ██║███████║██║   ██║██║     ██║
- * ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══██║██║   ██║██║     ██║
- * ███████╗ ╚████╔╝ ███████╗██║  ██║ ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║
- * ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝
- *
- */
-
- import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
- 
 library EnumerableSet {
 
   // To implement this library for multiple types with as little code
@@ -888,50 +876,7 @@ contract EveERC20Token is ERC20Permit, VaultOwned {
 
     using SafeMath for uint256;
 
-    /* info for airdrop mechanism */
-    address public immutable nftToken;
-    uint256 public immutable tokensPerClaim;
-
-    event Claimed(uint256 indexed tokenId, address indexed claimer);
-
-    error NotOwner();
-    error AlreadyRedeemed();
-
-    mapping(uint256 => bool) public hasClaimed;
-    /* -------------------------- */
-
-    constructor(
-        address _nft,
-        uint256 _tokensPerClaim,
-        string memory name,
-        string memory symbol
-        ) ERC20("Eve", "EVE", 9) {
-          nftToken = _nft;
-          tokensPerClaim = _tokensPerClaim;
-    }
-
-    function claim(uint256 tokenId) external payable {
-        if (hasClaimed[tokenId]) revert AlreadyRedeemed();
-        if (IERC721(nftToken).ownerOf(tokenId) != msg.sender) revert NotOwner();
-
-        hasClaimed[tokenId] = true;
-        emit Claimed(tokenId, msg.sender);
-
-        IERC721(nftToken).transfer(msg.sender, tokensPerClaim);
-    }
-
-    function batchClaim(uint256[] memory tokenIds) external payable {
-        for (uint256 index = 0; index < tokenIds.length; index++) {
-            uint256 tokenId = tokenIds[index];
-
-            if (hasClaimed[tokenId]) revert AlreadyRedeemed();
-            if (IERC721(nftToken).ownerOf(tokenId) != msg.sender) revert NotOwner();
-
-            hasClaimed[tokenId] = true;
-            emit Claimed(tokenId, msg.sender);
-        }
-
-        IERC721(nftToken).transfer(msg.sender, tokensPerClaim * tokenIds.length);
+    constructor() ERC20("Eve", "EVE", 9) {
     }
 
     function mint(address account_, uint256 amount_) external onlyVault() {
@@ -956,6 +901,4 @@ contract EveERC20Token is ERC20Permit, VaultOwned {
         _approve(account_, msg.sender, decreasedAllowance_);
         _burn(account_, amount_);
     }
-
-
 }
