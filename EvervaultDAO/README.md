@@ -36,8 +36,8 @@
     -   ### EVE Price
 
         Means MarketPrice of EVE
-        From BUSD-EVE Lp token
-        Get count ratio regarding BUSD and multiply BUSD token price
+        From USDT-EVE Lp token
+        Get count ratio regarding USDT and multiply USDT token price
 
     -   ### Market Cap
 
