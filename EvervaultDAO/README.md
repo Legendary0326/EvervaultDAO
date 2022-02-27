@@ -18,7 +18,7 @@
     And `BusdBond > setStaking(EveStakingAddress, false)`
     And `BusdBond > setStaking(StakingHelperAddress, true)`
     After first mint then set terms to 178
-    Do same for Eve-Busd Bond
+    Do same for USDT Bond
 15. Run `UsdtEveBond > InitializeBondTerms(111, 0, 75, 10000, 2000000000000000000000000, 0, 432000)`
     And `UsdtEveBond > setAdjustment(false, 0, 111, 3600)`
 16. Run `EveStaking > setContract(0, DistributorAddress)` and `EveStaking > setContract(1, StakingWarmupAddress)`
@@ -103,7 +103,7 @@
         1. Parameters Meaning
             - Price of bond
                 Get Dollar Bond Price from Smart Contracts.
-                - Stable Token (BUSD)
+                - Stable Token (USDT)
                     1 + controlVariable * (locked EVE amount for bonders) / (totalSupply of EVE)
                 - Nonstale Reserve Token
                     (Stable Token Bond Price) * (marketPrice of NonStable Reserve Token)
@@ -117,7 +117,7 @@
                 Discount Rate; (marketPrice - bondPrice) / bondPrice
             - Purchased
                 Get Dollar Price of assets in Treasury
-                - Stable Token (BUSD)
+                - Stable Token (USDT)
                     same as amount
                 - Nonstale Reserve Token
                     (Stable Token Bond Price) * (amount)
