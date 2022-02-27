@@ -26,7 +26,7 @@
 18. Run `EveTreasury > queue(0, BUSDBondAddress)` and `EveTreasury > toggle(0, BusdBondAddress)`
 19. Run `EveTreasury > queue(2, UsdtAddress)` and `EveTreasury > toggle(2, UsdtAddress)`
 20. Run `EveTreasury > queue(4, UsdtEveBond)` and `EveTreasury > toggle(4, UsdtEveBond)`
-21. Run `EveTreasury > queue(5, Eve-Usdt Pair Address)` and `EveTreasury > toggle(5, Eve-Usdt Pair Address, EveBondingCalculatorAddress)`
+21. Run `EveTreasury > queue(5, Usdt-Eve Pair Address)` and `EveTreasury > toggle(5, Usdt-Eve Pair Address, EveBondingCalculatorAddress)`
 22. Run `EveTreasury > queue(8, DistributorAddress)` and `EveTreasury > toggle(8, DistributorAddress)`
 23. Run `Distributor > addRecipient(EveStakingAddress, rate)`
     EveTreasury > toggle
