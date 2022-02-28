@@ -12,7 +12,7 @@
 10. Deploy `EveBondingCalculator(EveAddress)`
 11. Add Usdt-Eve LP Pair in Pancakeswap and take address
 12. Deploy `BUSDBond(Eve, BUSDAddress, Trasury, DAO, "")`
-13. Deploy `BondDepository(Eve, LPPairAddress, Trasury, DAO, Calculator)` for Eve-BUSD
+13. Deploy `BondDepository(Eve, LPPairAddress, Trasury, DAO, Calculator)` for USDT-EVE
 14. Run `BusdBond > initializeBondTerms(0, 0, 75, 10000, 16000000000000000000000000, 0, 432000)`
     And `BusdBond > setAdjustment(false, 0, 178, 2160)`
     And `BusdBond > setStaking(EveStakingAddress, false)`
